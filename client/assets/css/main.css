@@ -2,3 +2,27 @@ html,
 body {
     margin: 0;
 }
+
+.flexbox-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100vw;
+    height: 100vh;
+}
+
+.flexbox-item {
+    background-color: blue;
+}
+
+.map-div {
+    width: 70%;
+    height: 100%;
+    background-color: blue;
+}
+
+.info-div {
+    width: 30%;
+    height: 100%;
+    background-color: orange;
+}
