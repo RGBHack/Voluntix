@@ -3,31 +3,19 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel='stylesheet' type='text/css' href='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.60.0/maps/maps.css'/>
         <link rel="stylesheet" href="assets/css/main.css">
         <title>Voluntix</title>
     </head>
     <body>
         <div class="flexbox-container">
             <div class="flexbox-item map-div">
-                <div id="map"></div>
+                <div id="map" class="map"></div>
             </div>
             <div class="flexbox-item info-div">
             </div>
         </div>
-        <script>
-            // Initialize and add the map
-            function initMap() {
-                // The location of Uluru
-                var uluru = {lat: 28.608, lng: -80.606};
-                // The map, centered at Uluru
-                var map = new google.maps.Map(
-                    document.getElementById('map'), {zoom: 4, center: uluru});
-                // The marker, positioned at Uluru
-                var marker = new google.maps.Marker({position: uluru, map: map});
-            }
-        </script>
-        <script defer
-          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYyQxSeKu5XL4NIgJ5NI671VxhzVug0lA&callback=initMap">
-        </script>
+        <script src='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.60.0/maps/maps-web.min.js'></script>
+        <script src="assets/js/map.js"></script>
     </body>
 </html>
