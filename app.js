@@ -1,11 +1,20 @@
-const express = require('express')
-const path = require('path')
+var express = require("express");
+var { renderFile } = require("ejs");
+var { Server } = require("http");
+var path = require("path");
 
-const app = express()
+var app = express();
 
-app.get('/', (req, res) => {
-  res.sendFile(path.resolve(__dirname, 'client', 'index.html'))
-})
+var serv = new Server(app);
 
-const port = process.env.PORT || 5000
-app.listen(port, () => console.log(`Server started on port ${port}`))
+app.engine("html", renderFile);
+
+app.set("views", path.join(__dirname, "/client"));
+
+app.get("/", function (req, res) {
+  res.render("index.html", {
+    root: __dirname,
+  });
+});
+
+serv.listen(process.env.PORT || 5000);
