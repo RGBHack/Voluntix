@@ -9,9 +9,25 @@
     <body>
         <div class="flexbox-container">
             <div class="flexbox-item map-div">
+                <div id="map"></div>
             </div>
             <div class="flexbox-item info-div">
             </div>
         </div>
+        <script>
+            // Initialize and add the map
+            function initMap() {
+                // The location of Uluru
+                var uluru = {lat: -25.344, lng: 131.036};
+                // The map, centered at Uluru
+                var map = new google.maps.Map(
+                    document.getElementById('map'), {zoom: 4, center: uluru});
+                // The marker, positioned at Uluru
+                var marker = new google.maps.Marker({position: uluru, map: map});
+            }
+        </script>
+        <script defer
+          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCYyQxSeKu5XL4NIgJ5NI671VxhzVug0lA&callback=initMap">
+        </script>
     </body>
 </html>
