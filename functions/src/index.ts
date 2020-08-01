@@ -1,8 +1,6 @@
 import * as functions from 'firebase-functions';
-import { Response, Request, Express } from "express";
-import express from "express";
+import express, { Response, Request, Express } from "express";
 import { renderFile } from "ejs";
-//import path from "path"
 
 
 var app: Express = express();
@@ -10,7 +8,7 @@ var app: Express = express();
 
 app.engine("html", renderFile);
 
-app.set("views",__dirname+"\\..\\views")
+app.set("views",__dirname+"/../views")
 
 app.get("/", function (req: Request, res: Response) {
   // var model: Model = models[Math.floor(Math.random() * models.length + 1) - 1];
