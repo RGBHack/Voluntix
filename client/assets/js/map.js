@@ -1,12 +1,18 @@
+alert("Please click on the location icon to find the volunteering oppurtunities nearest you!")
+
 var points = [
   {
     latitude: -121.91595,
     longitude: 37.36729,
     name: "Speedy Pizza",
-    description: "Great Pizza. 100 Century Center Ct 210, San Jose, CA 95112, USA",
+    address: "100 Century Center Ct 210, San Jose, CA 95112, USA",
+    description: "Great Pizza.",
     link: "https://rgbhack.tk"
   }
 ]
+
+var markers = []
+var popups = []
 
 var map = tt.map({
     key: '3GL4SKqyqIbhIFJpZwVYTcBCA5DxGHMW',
@@ -38,8 +44,10 @@ points.forEach(point => {
   point.description = point.description.replaceAll('<','&lt;')
   point.description = point.description.replaceAll('>','&gt;')
 
-  var popup = new tt.Popup({offset: popupOffsets}).setHTML(`<b>${point.name}</b><br/>${point.description} <br/> <a target="_blank" href="${point.link}">Sign Up Here!</a>`);
-  marker.setPopup(popup)
+  var popup = new tt.Popup({offset: popupOffsets}).setHTML(`<b>${point.name}</b><br/>${point.description} <br/>${point.address}<br/> <a target="_blank" href="${point.link}">Sign Up Here!</a>`);
+  var popup1 = marker.setPopup(popup)
+  markers.push(marker)
+  popups.push(popup1)
 })
 
 var geolocate = new tt.GeolocateControl({
@@ -55,4 +63,5 @@ map.addControl(geolocate);
 
 function goToLocation (id) {
   map.easeTo({center: [points[id].latitude,points[id].longitude], zoom: 15})
+  if (!popups[id]._popup.isOpen()) popups[id].togglePopup()
 }
