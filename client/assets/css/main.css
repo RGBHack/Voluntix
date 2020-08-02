@@ -56,6 +56,7 @@ body {
     background-color: #f6f6f6;
     text-align: center;
     overflow: auto;
+    overflow-x: hidden;
 }
 
 .info-div form input {

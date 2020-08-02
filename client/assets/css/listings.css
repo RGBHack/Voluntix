@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&family=Roboto+Mono&family=Source+Code+Pro&display=swap');
+
+html,
+body {
+  margin: 0;
+  font-family: 'Comfortaa', cursive;
+  overflow-x: hidden;
+}
+
+form {
+  text-align: center;
+}
+
+input {
+  width: 70%;
+  height: 2rem;
+  padding: 0.2rem 1rem;
+  border-radius: 10px;
+  text-align: center;
+  outline: none;
+  border: 1px solid black;
+}
+
+.submit {
+  border-radius: 10px !important;
+}
+
+.new-listing-btn {
+  padding: 1rem 2rem !important;
+  border-radius: 20px;
+}
+
+.modal-body {
+  padding: 2rem 0 !important;
+  text-align: center !important;
+}
