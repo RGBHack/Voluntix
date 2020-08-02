@@ -46,10 +46,11 @@ firebase.firestore().collection("places").get().then(docs => {
 
     var div = document.createElement("div")
     div.classList = "listing"
+    div.id = `${index}bruh`
 
     
 
-    div.innerHTML = `<h1 id="${index}">${point.name}</h1><h2>${point.address}</h2>`
+    div.innerHTML = `<h1 id="${index}">${point.name}</h1><h2>${point.address}</h2><h2>${point.description}</h2>`
 
     document.getElementById("listings").appendChild(div)
 
@@ -67,11 +68,26 @@ firebase.firestore().collection("places").get().then(docs => {
   })
   geolocate.on("geolocate", function(obj) {
     document.getElementById("listings").innerHTML = ""
-    
-    console.log(`longitude is ${obj.coords.longitude} and latitude is ${obj.coords.latitude}`)
+    var points2 = points.concat()
+    points2.sort((a, b) => calculateDistance(a.latitude,a.longitude,obj.coords.longitude,obj.coords.latitude)-calculateDistance(b.latitude,b.longitude,obj.coords.longitude,obj.coords.latitude))
+    points2.forEach(point => {
+      var index = point.id
+      var div = document.createElement("div")
+      div.classList = "listing"
+      div.id = `${index}bruh`
+  
+      div.innerHTML = `<h1 id="${index}">${point.name}</h1><h2>${point.address}</h2><h2>${point.description}</h2>`
+  
+      document.getElementById("listings").appendChild(div)
+  
+      document.getElementById(index).onclick = function () {
+        map.easeTo({center: [points[index].latitude,points[index].longitude], zoom: 15})
+        if (!popups[index]._popup.isOpen()) popups[index].togglePopup()
+      }
+    })
   })
   map.addControl(geolocate);
-  
+
 })
 
 function calculateDistance(lat1, lon1, lat2, lon2) {
@@ -84,4 +100,17 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
   dist = dist * 180/Math.PI
   dist = dist * 60 * 1.1515
   return dist
+}
+
+document.getElementById("search").onchange = function () {
+  var value = event.target.value
+  points.forEach(point => {
+    console.log(point.name)
+    if (point.name.toLowerCase().includes(value.toLowerCase()) || point.description.toLowerCase().includes(value.toLowerCase())) {
+      document.getElementById(point.id+"bruh").style.display = "block"
+    }
+    else {
+      document.getElementById(point.id+"bruh").style.display = "none"
+    }
+  })
 }

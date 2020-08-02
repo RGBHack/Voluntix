@@ -16,6 +16,6 @@ form.onsubmit = (e) => {
 };
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
-    window.location.pathname = "/";
+    window.location.pathname = "/listings";
   }
 });

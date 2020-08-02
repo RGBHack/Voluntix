@@ -3,16 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="assets/css/login.css" />
   <title>Voluntix Sign Up</title>
 </head>
 <body>
-  <h1>Sign Up</h1>
-  <form id="form" style="display:block;">
-    <input name="name" id="name" type="text" placholder="Email" style="display:block;"/>
-    <input name="password" id="password" type="password" placholder="Password" style="display:block;"/>
-    <input type="submit" style="display:block;" />
-  </form>
-  Create. HTML sucks.
+  <div class="container">
+    <div class="main-box-login">
+      <h1>Sign Up</h1>
+      <form id="form" style="display:block;">
+        <input name="name" id="name" type="text" placholder="Email" style="display:block;" placeholder="Email"/>
+        <input name="password" id="password" type="password" placholder="Password" style="display:block;" placeholder="Password"/>
+        <input type="submit" style="display:block;" />
+      </form>
+    </div>
+  </div>
 </body>
 <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
