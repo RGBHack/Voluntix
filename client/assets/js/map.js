@@ -39,7 +39,7 @@ firebase.firestore().collection("places").get().then(docs => {
     point.description = point.description.replaceAll('<','&lt;')
     point.description = point.description.replaceAll('>','&gt;')
 
-    var popup = new tt.Popup({offset: popupOffsets}).setHTML(`<b>${point.name}</b><br/>${point.description} <br/>${point.address}<br/> <a target="_blank" href="${point.link}">Sign Up Here!</a>`);
+    var popup = new tt.Popup({offset: popupOffsets}).setHTML(`<b>${point.name}</b><br/>Address: ${point.address} <br/>Date/Time: ${point.date.toDate().toLocaleString()}<br/>Description: ${point.description}<br /> <a target="_blank" href="${point.link}">Sign Up Here!</a>`);
     var popup1 = marker.setPopup(popup)
     markers.push(marker)
     popups.push(popup1)
@@ -50,7 +50,7 @@ firebase.firestore().collection("places").get().then(docs => {
 
     
 
-    div.innerHTML = `<h1 id="${index}">${point.name}</h1><h2>${point.address}</h2><h2>${point.description}</h2>`
+    div.innerHTML = `<h1 id="${index}">${point.name}</h1><h2>Address: ${point.address}</h2><h2>Date/Time: ${point.date.toDate().toLocaleString()}<h2>Description: ${point.description}</h2> <h2><a target="_blank" href="${point.link}">Sign Up Here!</a></h2>`
 
     document.getElementById("listings").appendChild(div)
 
@@ -76,10 +76,12 @@ firebase.firestore().collection("places").get().then(docs => {
       div.classList = "listing"
       div.id = `${index}bruh`
   
-      div.innerHTML = `<h1 id="${index}">${point.name}</h1><h2>${point.address}</h2><h2>${point.description}</h2>`
+      div.innerHTML = `<h1 id="${index}">${point.name}</h1><h2>Address: ${point.address}</h2><h2>Date/Time: ${point.date.toDate().toLocaleString()}<h2>Description: ${point.description}</h2> <h2><a target="_blank" href="${point.link}">Sign Up Here!</a></h2>`
   
       document.getElementById("listings").appendChild(div)
   
+      document.getElementById("location-message").innerHTML = "Volunteer Experiences are ordered by location."
+
       document.getElementById(index).onclick = function () {
         map.easeTo({center: [points[index].latitude,points[index].longitude], zoom: 15})
         if (!popups[index]._popup.isOpen()) popups[index].togglePopup()
@@ -102,7 +104,7 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
   return dist
 }
 
-document.getElementById("search").onchange = function () {
+document.getElementById("search").oninput = function () {
   var value = event.target.value
   points.forEach(point => {
     console.log(point.name)
