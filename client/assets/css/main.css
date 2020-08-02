@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa&family=Roboto+Mono&family=Source+Code+Pro&display=swap');
 
 html,
 body {
@@ -18,6 +18,30 @@ body {
 
 .flexbox-item {
     background-color: #f6f6f6;
+}
+
+.inline-sucks {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 10;
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.inline-sucks h1 {
+    margin: 5px;
+    padding: 0px;
+}
+
+.inline-sucks p {
+    font-family: 'Source Code Pro', monospace;
+    margin: 5px;
+    padding: 0px;
 }
 
 .map-div {
@@ -64,7 +88,8 @@ body {
 }
 
 .listing h2 {
-    font-size: 1rem;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.8rem;
     margin: 10px;
 }
 
@@ -79,6 +104,18 @@ body {
 }
 
 @media screen and (max-width: 800px) {
+    .inline-sucks {
+        width: 65%;
+    }
+
+    .inline-sucks h1 {
+        font-size: 1rem;
+    }
+
+    .inline-sucks h2 {
+        font-size: 0.5rem;
+    }
+
     .map-div {
         width: 100%;
         height: 100%;

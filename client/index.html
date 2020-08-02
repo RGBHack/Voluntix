@@ -8,20 +8,9 @@
         <title>Voluntix</title>
     </head>
     <body>
-        <div style="
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            z-index: 10;
-            background-color: white;
-            border-radius: 10px;
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        ">
-            <h1 style="margin: 5px; padding: 0px;">Voluntix</h1>
-            <p style="margin: 5px; padding: 0px;">A platform to help people easily volunteer</p>
+        <div class="inline-sucks">
+            <h1>Voluntix</h1>
+            <p>A platform to help people easily volunteer</p>
         </div>
         <div class="flexbox-container">
             <div class="flexbox-item map-div">
@@ -33,7 +22,7 @@
                     <input type="text" id="search" name="search" placeholder="Search for Opportunities">
                 </form>
                 <div class="listing">
-                    <h1 onclick="goToLocation(0)">go to speedy pizza :)</h1>
+                    <h1 id="0">go to speedy pizza :)</h1>
                     <h2>100 Century Center Ct 210, San Jose, CA 95112, USA</h2>
                 </div>
                 <div class="listing">
@@ -102,7 +91,10 @@
                 </div>
             </div>
         </div>
-        <script src='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.60.0/maps/maps-web.min.js'></script>
+        <script src='https://api.tomtom.com/maps-sdk-for-web/cdn/5.x/5.60.0/maps/maps-web.min.js'></script>        
+        <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+        <script src="assets/js/firebase_config.js"></script>
         <script src="assets/js/map.js"></script>
     </body>
 </html>
