@@ -59,7 +59,7 @@ firebase.auth().onAuthStateChanged((u) => {
         <div class="flexbox-item">
           <div class="listing">
             <h1>${point.name}</h1>
-            <h2>Address: ${point.name}</h2>
+            <h2>Address: ${point.address}</h2>
             <h2>Date/Time: ${point.date.toDate().toLocaleString()}</h2>
             <h2>Description: ${point.description}</h2>
             <h2><a target="_blank" href="${point.link}">Sign Up Here!</a></h2>
