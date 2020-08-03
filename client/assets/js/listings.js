@@ -21,9 +21,10 @@ form.onsubmit = (event) => {
         console.log(res2)
         var lat = res2.results[0].locations[0].displayLatLng.lat; 
         var lng = res2.results[0].locations[0].displayLatLng.lng;
+        console.log(lat,lng)
         firebase.firestore().collection("places").add({
-          longitude: lat,
-          latitude: lng,
+          longitude: lng,
+          latitude: lat,
           name: form['name'].value,
           description: form['description'].value,
           address: form['address'].value,

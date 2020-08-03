@@ -12,7 +12,7 @@ firebase.firestore().collection("places").get().then(docs => {
       key: '3GL4SKqyqIbhIFJpZwVYTcBCA5DxGHMW',
       container: 'map',
       style: 'tomtom://vector/1/basic-main',
-      center: [points[0].latitude,points[0].longitude],
+      center: [-122.454299,37.773881],
       zoom: 15
   });
 
@@ -23,7 +23,7 @@ firebase.firestore().collection("places").get().then(docs => {
     var markerElement = document.createElement('div');
     markerElement.classList = 'marker';
     markerElement.innerHTML = "<img src='assets/img/location.svg'>"
-    var marker = new tt.Marker({element: markerElement}).setLngLat([point.latitude,point.longitude]).addTo(map);
+    var marker = new tt.Marker({element: markerElement}).setLngLat([point.longitude,point.latitude]).addTo(map);
 
     var popupOffsets = {
       top: [0, 0],
@@ -55,7 +55,7 @@ firebase.firestore().collection("places").get().then(docs => {
     document.getElementById("listings").appendChild(div)
 
     document.getElementById(index).onclick = function () {
-      map.easeTo({center: [points[index].latitude,points[index].longitude], zoom: 15})
+      map.easeTo({center: [points[index].longitude,points[index].latitude], zoom: 15})
       if (!popups[index]._popup.isOpen()) popups[index].togglePopup()
     }
   })
@@ -83,7 +83,7 @@ firebase.firestore().collection("places").get().then(docs => {
       document.getElementById("location-message").innerHTML = "Volunteer Experiences are ordered by location."
 
       document.getElementById(index).onclick = function () {
-        map.easeTo({center: [points[index].latitude,points[index].longitude], zoom: 15})
+        map.easeTo({center: [points[index].longitude,points[index].latitude], zoom: 15})
         if (!popups[index]._popup.isOpen()) popups[index].togglePopup()
       }
     })
