@@ -2,3 +2,4 @@
 node_modules/
 deploy.sh
 firebase-debug.log
+.firebase/
