@@ -4,7 +4,7 @@
 
 <h3 align="center">
   <i>
-   tagline
+   A centralized volunteer app to help find volunteer opportunities
   </i>
 </h3>
 
