@@ -20,8 +20,7 @@
 <hr>
 
 ## ✨ In Action
-
-add youtube link here
+[Video Demonstration](https://youtu.be/u2rjHwgSH5s)
 
 ## 💻 Try it out
 
