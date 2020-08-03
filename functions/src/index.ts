@@ -1,21 +1,34 @@
 import * as functions from 'firebase-functions';
-import express, { Response, Request, Express } from "express";
-import { renderFile } from "ejs";
+const NodeGeocoder = require('node-geocoder');
 
 
-var app: Express = express();
+const options = {
+  provider: 'mapquest',
 
+  // Optional depending on the providers
+  //fetch: customFetchImplementation,
+  apiKey: 'N659j7ox3vSpd81adhphLOKmFafYAAmP', // for Mapquest, OpenCage, Google Premier
+  formatter: null // 'gpx', 'string', ...
+};
 
-app.engine("html", renderFile);
+const geocoder = NodeGeocoder(options);
 
-app.set("views",__dirname+"/../views")
+exports.getLongLat = functions.https.onCall((data, context) => {
+  // Message text passed from the client.
+  const text = data.text;
 
-app.get("/", function (req: Request, res: Response) {
-  // var model: Model = models[Math.floor(Math.random() * models.length + 1) - 1];
-  res.render("index.html", {
-    root: __dirname,
-    bruh: "custom content"
-  });
+  geocoder.geocode(text)
+  .then((res: any) => {
+    return {
+      longitude: res[0].longitude, 
+      latitude: res[0].latitude, 
+      result: 'success'
+    }
+  })
+  .catch((err: any) => {
+    return {
+      result: 'fail'
+    }
+  })
+
 });
-
-exports.webApp = functions.https.onRequest(app)

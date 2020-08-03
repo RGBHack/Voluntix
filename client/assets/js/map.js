@@ -22,7 +22,7 @@ firebase.firestore().collection("places").get().then(docs => {
     point.id = index;
     var markerElement = document.createElement('div');
     markerElement.classList = 'marker';
-    markerElement.innerHTML = "<img src='assets/images/marker.svg'>"
+    markerElement.innerHTML = "<img src='assets/img/location.svg'>"
     var marker = new tt.Marker({element: markerElement}).setLngLat([point.latitude,point.longitude]).addTo(map);
 
     var popupOffsets = {
@@ -33,11 +33,11 @@ firebase.firestore().collection("places").get().then(docs => {
       left: [25, -35],
       right: [-25, -35]
     }
-    point.name = point.name.replaceAll('<','&lt;')
-    point.name = point.name.replaceAll('>','&gt;')
+    point.name = point.name.replace(/</g,'&lt;')
+    point.name = point.name.replace(/>/g,'&gt;')
 
-    point.description = point.description.replaceAll('<','&lt;')
-    point.description = point.description.replaceAll('>','&gt;')
+    point.description = point.description.replace(/</g,'&lt;')
+    point.description = point.description.replace(/>/g,'&gt;')
 
     var popup = new tt.Popup({offset: popupOffsets}).setHTML(`<b>${point.name}</b><br/>Address: ${point.address} <br/>Date/Time: ${point.date.toDate().toLocaleString()}<br/>Description: ${point.description}<br /> <a target="_blank" href="${point.link}">Sign Up Here!</a>`);
     var popup1 = marker.setPopup(popup)
@@ -50,7 +50,7 @@ firebase.firestore().collection("places").get().then(docs => {
 
     
 
-    div.innerHTML = `<h1 id="${index}">${point.name}</h1><h2>Address: ${point.address}</h2><h2>Date/Time: ${point.date.toDate().toLocaleString()}<h2>Description: ${point.description}</h2> <h2><a target="_blank" href="${point.link}">Sign Up Here!</a></h2>`
+    div.innerHTML = `<h1>${point.name}</h1><img id="${index}" src="./assets/img/location.svg"><h2>Address: ${point.address}</h2><h2>Date/Time: ${point.date.toDate().toLocaleString()}<h2>Description: ${point.description}</h2> <h2><a target="_blank" href="${point.link}">Sign Up Here!</a></h2>`
 
     document.getElementById("listings").appendChild(div)
 
@@ -76,7 +76,7 @@ firebase.firestore().collection("places").get().then(docs => {
       div.classList = "listing"
       div.id = `${index}bruh`
   
-      div.innerHTML = `<h1 id="${index}">${point.name}</h1><h2>Address: ${point.address}</h2><h2>Date/Time: ${point.date.toDate().toLocaleString()}<h2>Description: ${point.description}</h2> <h2><a target="_blank" href="${point.link}">Sign Up Here!</a></h2>`
+      div.innerHTML = `<h1>${point.name}</h1><img id="${index}" src="./assets/img/location.svg"><h2>Address: ${point.address}</h2><h2>Date/Time: ${point.date.toDate().toLocaleString()}<h2>Description: ${point.description}</h2> <h2><a target="_blank" href="${point.link}">Sign Up Here!</a></h2>`
   
       document.getElementById("listings").appendChild(div)
   
