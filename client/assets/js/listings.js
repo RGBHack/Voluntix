@@ -8,15 +8,13 @@ form.onsubmit = (event) => {
   if (!user) return
   signing = true
   var date = undefined
-  try {
-    date = new Date(form['date'].value)
-  }
-  catch (err) {
-    signing = false
-    alert("Invalid date")
+  date = new Date(form['date'].value)
+  console.log(Object.prototype.toString.call(date))
+  if (Object.prototype.toString.call(date) !== "[object Date]") {
+    alert("Invalid Date!")
     return
   }
-  fetch(`http://www.mapquestapi.com/geocoding/v1/address?key=N659j7ox3vSpd81adhphLOKmFafYAAmP&location=${form['address'].value}`,{method: 'POST'}).then(res => {
+  fetch(`https://www.mapquestapi.com/geocoding/v1/address?key=N659j7ox3vSpd81adhphLOKmFafYAAmP&location=${form['address'].value}`,{method: 'POST'}).then(res => {
       res.json().then(res2 => {
         console.log(res2)
         var lat = res2.results[0].locations[0].displayLatLng.lat; 
@@ -32,7 +30,11 @@ form.onsubmit = (event) => {
           date: new Date(form['date'].value),
           uid: user.uid
         }).then(() => {
+          alert("Event added successfully")
           window.location = window.location
+        }).catch(() => {
+          signing = false
+          alert("Incorrect Formatting")
         })
       })
   })

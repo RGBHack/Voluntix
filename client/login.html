@@ -1,21 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
   <link rel="stylesheet" href="assets/css/login.css" />
   <link rel="shortcut icon" type="image/png" href="./assets/img/logo.png">
   <link rel="icon" type="image/png" href="./assets/img/logo.png">
   <title>Voluntix Log In</title>
 </head>
+
 <body>
   <div class="container">
     <div class="main-box-login">
       <h1>Log In</h1>
       <form class="login-form" id="form" style="display:block;">
-        <input name="name" id="name" type="text" placholder="Email" style="display:block;" placeholder="Email"/>
-        <input name="password" id="password" type="password" placholder="Password" style="display:block;" placeholder="Password"/>
-        <input type="submit" value="Log In" style="display:block;" />
+        <input name="name" id="name" type="text" placholder="Email" style="display:block;" placeholder="Email" />
+        <input name="password" id="password" type="password" placholder="Password" style="display:block;"
+          placeholder="Password" />
+        <input type="submit" value="Log In" style="display:block;"  />
+        <button class="btn btn-dark" onclick="window.location.pathname='/signup'" type="button">
+          Sign Up
+        </button>
       </form>
     </div>
   </div>
@@ -24,4 +32,5 @@
 <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase-auth.js"></script>
 <script src="/assets/js/firebase_config.js"></script>
 <script src="/assets/js/login.js"></script>
+
 </html>

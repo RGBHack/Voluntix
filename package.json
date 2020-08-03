@@ -1,7 +1,0 @@
-{
-  "name": "voluntix",
-  "scripts": {
-    "postinstall": "npm run install-functions",
-    "install-functions": "cd functions && npm install"
-  }
-}
